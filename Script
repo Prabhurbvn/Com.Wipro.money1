@@ -1,0 +1,44 @@
+# Com.Wipro.money1package Com.Wipro.money.Script;
+
+import org.testng.Assert;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import Com.Wipro.money.Base.Testbase;
+import Com.Wipro.money.Pages.LoginPage;
+import Com.Wipro.money.Utils.Testutil;
+
+public class Script extends Testbase
+{
+   LoginPage log;
+   
+   @BeforeTest(alwaysRun=true)
+   public void Setup()
+   {
+	   Open();
+	   log=new LoginPage();
+   }
+   
+   @Test
+   public void ValidateTitle()
+   {
+	   String str = log.VerifyTitle();
+	   Assert.assertEquals(str, "Facebook – log in or sign up");
+   }
+   
+   @Test
+   public void ValidateUrl()
+   {
+	   String s = log.VerifyUrl();
+	   Assert.assertEquals(s, "https://www.facebook.com/");
+   }
+   
+  
+ 
+   @AfterTest
+   public void Teardown()
+   {
+	   driver.close();
+   }
+}
